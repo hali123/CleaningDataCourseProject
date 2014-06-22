@@ -128,7 +128,7 @@ e. Repeat similar steps (a through d) for training data set and create a single
    training data set
 
 f. Append the test and training data frames using rbind to create a consolidated 
-   data frame. This data frame has 10299 records and 81 columns
+   data frame. This data frame has 10299 records and 563 columns
    
    	   mydata <- rbind(testdata,traindata)
    	   
@@ -145,7 +145,8 @@ h. Extract the indices corresponding to those features that have 'mean' or 'std'
 	   meanstdcolnames <- paste("V", meanstdindex, sep="")
    
 i. Create a new dataframe that has only columns that have the mean and std 
-   deviation measurements along with the subject and activity
+   deviation measurements along with the subject and activity. This data frame 
+   has 10299 records and 81 columns
    
 	   myselectdata1 <- subset(mydata, select = 1:2)
 	   myselectdata2 <- subset(mydata, select = meanstdcolnames )
