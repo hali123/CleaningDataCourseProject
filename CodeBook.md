@@ -1,5 +1,6 @@
 ===============================================================================
 Getting and Cleaning Data Course Project
+===============================================================================
 CodeBook.md - Version 1.0
 ===============================================================================
 Overview
@@ -36,60 +37,60 @@ Refer http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using
 
 The original dataset includes the following files:
 
-'features_info.txt': Shows information about the variables used on the feature
+1. 'features_info.txt': Shows information about the variables used on the feature
 vector.
-'features.txt': List of all features.
-'activity_labels.txt': Links the class labels with their activity name.
-'train/X_train.txt': Training set.
-'train/y_train.txt': Training labels.
-'test/X_test.txt': Test set.
-'test/y_test.txt': Test labels.
-'train/subject_train.txt': Each row identifies the subject who performed the 
-activity for each window sample. Its range is from 1 to 30.
-'train/Inertial Signals/total_acc_x_train.txt': The acceleration signal from
-the smartphone accelerometer X axis in standard gravity units 'g'. Every row 
-shows a 128 element vector. The same description applies for the 
-'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y and Z axis.
-'train/Inertial Signals/body_acc_x_train.txt': The body acceleration signal 
-obtained by subtracting the gravity from the total acceleration.
-'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector 
-measured by the gyroscope for each window sample. The units are radians/second.
+2. 'features.txt': List of all features.
+3. 'activity_labels.txt': Links the class labels with their activity name.
+4. 'train/X_train.txt': Training set.
+5. 'train/y_train.txt': Training labels.
+6. 'test/X_test.txt': Test set.
+7. 'test/y_test.txt': Test labels.
+8. 'train/subject_train.txt': Each row identifies the subject who performed the 
+    activity for each window sample. Its range is from 1 to 30.
+9. 'train/Inertial Signals/total_acc_x_train.txt': The acceleration signal from
+    the smartphone accelerometer X axis in standard gravity units 'g'. Every row 
+    shows a 128 element vector. The same description applies for the 
+10.'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y and Z axis.
+11.'train/Inertial Signals/body_acc_x_train.txt': The body acceleration signal 
+    obtained by subtracting the gravity from the total acceleration.
+12.'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector 
+    measured by the gyroscope for each window sample. The units are radians/second.
 
 ===============================================================================
 Prior to execution
 ===============================================================================
 
--The script file run_Analysis.R is organized as a single function mergeData()
--The script requires that the file run_Analysis.R be present in the working 
+*The script file run_Analysis.R is organized as a single function mergeData()
+*The script requires that the file run_Analysis.R be present in the working 
  directory.
--Please set your working directory with setwd() prior to executing the script.
--The script does not download the files to limit multiple hits to the web URL
+*Please set your working directory with setwd() prior to executing the script.
+*The script does not download the files to limit multiple hits to the web URL
  every time the script is executed
--You can download the file for the first time by executing the following 
+*You can download the file for the first time by executing the following 
  snippet.
 
 	fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 	download.file(fileUrl, destfile = "Dataset.zip", method = "curl")
 	unzip("Dataset.zip")
 
--The script assumes that the same files names and folder structure as the 
+*The script assumes that the same files names and folder structure as the 
  original download is maintained. Reproduced here for reference.
  
  
-+---<Working Directory>
-  ---run_analysis.R
-  +--UCI HAR Dataset
-     +--test
-     	---subject_test.txt
-     	---X_test.txt
-     	---y_test.txt
-     +--train
-     	---subject_train.txt
-     	---X_train.txt
-     	---y_train.txt
-     ---activity_labels.txt
-     ---features.txt
-     ---features_info.txt
+*+---<Working Directory>
+*  ---run_analysis.R
+*  +--UCI HAR Dataset
+*     +--test
+*     	---subject_test.txt
+*     	---X_test.txt
+*     	---y_test.txt
+*     +--train
+*     	---subject_train.txt
+*     	---X_train.txt
+*     	---y_train.txt
+*     ---activity_labels.txt
+*     ---features.txt
+*     ---features_info.txt
 
 ===============================================================================
 Transformations Performed
@@ -183,84 +184,85 @@ j The two dataframes are extracted as files. myselectdata dataframe is
 	  write.table(avgdata,avgfile)
 	  
 k. The output dataset consists of the following fields
-	Subject
-	Activity
-	tBodyAccmeanX
-	tBodyAccmeanY
-	tBodyAccmeanZ
-	tBodyAccstdX
-	tBodyAccstdY
-	tBodyAccstdZ
-	tGravityAccmeanX
-	tGravityAccmeanY
-	tGravityAccmeanZ
-	tGravityAccstdX 
-	tGravityAccstdY
-	tGravityAccstdZ
-	tBodyAccJerkmeanX
-	tBodyAccJerkmeanY
-	tBodyAccJerkmeanZ
-	tBodyAccJerkstdX
-	tBodyAccJerkstdY
-	tBodyAccJerkstdZ
-	tBodyGyromeanX
-	tBodyGyromeanY
-	tBodyGyromeanZ
-	tBodyGyrostdX
-	tBodyGyrostdY
-	tBodyGyrostdZ
-	tBodyGyroJerkmeanX 
-	tBodyGyroJerkmeanY 
-	tBodyGyroJerkmeanZ 
-	tBodyGyroJerkstdX
-	tBodyGyroJerkstdY
-	tBodyGyroJerkstdZ
-	tBodyAccMagmean
-	tBodyAccMagstd
-	tGravityAccMagmean 
-	tGravityAccMagstd
-	tBodyAccJerkMagmean
-	tBodyAccJerkMagstd
-	tBodyGyroMagmean
-	tBodyGyroMagstd
-	tBodyGyroJerkMagmean 
-	tBodyGyroJerkMagstd
-	fBodyAccmeanX
-	fBodyAccmeanY
-	fBodyAccmeanZ
-	fBodyAccstdX
-	fBodyAccstdY
-	fBodyAccstdZ
-	fBodyAccmeanFreqX
-	fBodyAccmeanFreqY
-	fBodyAccmeanFreqZ
-	fBodyAccJerkmeanX
-	fBodyAccJerkmeanY
-	fBodyAccJerkmeanZ
-	fBodyAccJerkstdX
-	fBodyAccJerkstdY
-	fBodyAccJerkstdZ
-	fBodyAccJerkmeanFreqX
-	fBodyAccJerkmeanFreqY
-	fBodyAccJerkmeanFreqZ
-	fBodyGyromeanX
-	fBodyGyromeanY
-	fBodyGyromeanZ
-	fBodyGyrostdX
-	fBodyGyrostdY
-	fBodyGyrostdZ
-	fBodyGyromeanFreqX
-	fBodyGyromeanFreqY
-	fBodyGyromeanFreqZ
-	fBodyAccMagmean
-	fBodyAccMagstd
-	fBodyAccMagmeanFreq
-	fBodyBodyAccJerkMagmean
-	fBodyBodyAccJerkMagstd
-	fBodyBodyAccJerkMagmeanFreq
-	fBodyBodyGyroMagmean
-	fBodyBodyGyroMagstd
-	fBodyBodyGyroMagmeanFreq
-	fBodyBodyGyroJerkMagmean
-	fBodyBodyGyroJerkMagstd
-	fBodyBodyGyroJerkMagmeanFreq
+	*Subject
+	*Activity
+	*tBodyAccmeanX
+	*tBodyAccmeanY
+	*tBodyAccmeanZ
+	*tBodyAccstdX
+	*tBodyAccstdY
+	*tBodyAccstdZ
+	*tGravityAccmeanX
+	*tGravityAccmeanY
+	*tGravityAccmeanZ
+	*tGravityAccstdX 
+	*tGravityAccstdY
+	*tGravityAccstdZ
+	*tBodyAccJerkmeanX
+	*tBodyAccJerkmeanY
+	*tBodyAccJerkmeanZ
+	*tBodyAccJerkstdX
+	*tBodyAccJerkstdY
+	*tBodyAccJerkstdZ
+	*tBodyGyromeanX
+	*tBodyGyromeanY
+	*tBodyGyromeanZ
+	*tBodyGyrostdX
+	*tBodyGyrostdY
+	*tBodyGyrostdZ
+	*tBodyGyroJerkmeanX 
+	*tBodyGyroJerkmeanY 
+	*tBodyGyroJerkmeanZ 
+	*tBodyGyroJerkstdX
+	*tBodyGyroJerkstdY
+	*tBodyGyroJerkstdZ
+	*tBodyAccMagmean
+	*tBodyAccMagstd
+	*tGravityAccMagmean 
+	*tGravityAccMagstd
+	*tBodyAccJerkMagmean
+	*tBodyAccJerkMagstd
+	*tBodyGyroMagmean
+	*tBodyGyroMagstd
+	*tBodyGyroJerkMagmean 
+	*tBodyGyroJerkMagstd
+	*fBodyAccmeanX
+	*fBodyAccmeanY
+	*fBodyAccmeanZ
+	*fBodyAccstdX
+	*fBodyAccstdY
+	*fBodyAccstdZ
+	*fBodyAccmeanFreqX
+	*fBodyAccmeanFreqY
+	*fBodyAccmeanFreqZ
+	*fBodyAccJerkmeanX
+	*fBodyAccJerkmeanY
+	*fBodyAccJerkmeanZ
+	*fBodyAccJerkstdX
+	*fBodyAccJerkstdY
+	*fBodyAccJerkstdZ
+	*fBodyAccJerkmeanFreqX
+	*fBodyAccJerkmeanFreqY
+	*fBodyAccJerkmeanFreqZ
+	*fBodyGyromeanX
+	*fBodyGyromeanY
+	*fBodyGyromeanZ
+	*fBodyGyrostdX
+	*fBodyGyrostdY
+	*fBodyGyrostdZ
+	*fBodyGyromeanFreqX
+	*fBodyGyromeanFreqY
+	*fBodyGyromeanFreqZ
+	*fBodyAccMagmean
+	*fBodyAccMagstd
+	*fBodyAccMagmeanFreq
+	*fBodyBodyAccJerkMagmean
+	*fBodyBodyAccJerkMagstd
+	*fBodyBodyAccJerkMagmeanFreq
+	*fBodyBodyGyroMagmean
+	*fBodyBodyGyroMagstd
+	*fBodyBodyGyroMagmeanFreq
+	*fBodyBodyGyroJerkMagmean
+	*fBodyBodyGyroJerkMagstd
+	*fBodyBodyGyroJerkMagmeanFreq
+ 
