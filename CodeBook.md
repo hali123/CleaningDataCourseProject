@@ -127,7 +127,7 @@ e. Repeat similar steps (a through d) for training data set and create a single
    training data set
 
 f. Append the test and training data frames using rbind to create a consolidated 
-   data frame. This data frame has 10299 records and 563 columns
+   data frame. This data frame has 10299 records and 81 columns
    
    	   mydata <- rbind(testdata,traindata)
    	   
@@ -168,7 +168,7 @@ k. Clean up the column names by removing occurances of () and -.  This is to mak
 	   colnames(myselectdata) <- c(colnames)
 	   
 l. Create a second data frame that has the average of each column for each subject
-   and activity 
+   and activity. This data frame has 54 records and 81 columns 
    
 	   avgdata<-aggregate(myselectdata[,3:81], 
 		     by=list(myselectdata$Subject, myselectdata$Activity), FUN=mean,na.rm=TRUE)
